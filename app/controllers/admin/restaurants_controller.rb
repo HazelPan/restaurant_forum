@@ -18,6 +18,7 @@ class Admin::RestaurantsController < ApplicationController
     else
       flash[:alert] = "restaurant was failed to create"
       render :new
+    end
 
   end
 
