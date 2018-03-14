@@ -22,6 +22,10 @@ class Admin::RestaurantsController < ApplicationController
 
   end
 
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
+
 
   private
 
