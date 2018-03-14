@@ -15,7 +15,7 @@ class Admin::RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
       flash[:alert] = "restaurant was successfully created"
-      redirect_to root_path
+      redirect_to admin_restaurants_path
     else
       flash[:alert] = "restaurant was failed to create"
       render :new
@@ -36,7 +36,7 @@ class Admin::RestaurantsController < ApplicationController
 
   def destroy
     @restaurant.destroy
-    redirect_to :index
+    redirect_to admin_restaurants_path
     flash[:alert] = "restaurant was deleted"
   end
 
