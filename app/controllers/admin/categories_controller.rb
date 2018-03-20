@@ -4,11 +4,28 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @categories = Category.page(params[:page]).per(10)
-    
+    @category = Category.new
+
   end
 
-  def new
-    @category = Category.new
-    
+  def create
+    @category = Category.new(category_params) 
+    if @category.save
+      flash[:alert] = "Category was successfully saved"
+      redirect_to admin_categories_path
+    else
+      flash[:alert] = "Category was failed to create"
+      @categories = Category.all
+      render :index
+    end
   end
+
+
+  private
+
+  def category_params
+    params.require(:category).permit(:name)
+  end
+
+  
 end
