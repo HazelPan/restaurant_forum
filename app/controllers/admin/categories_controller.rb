@@ -14,7 +14,7 @@ class Admin::CategoriesController < ApplicationController
       flash[:alert] = "Category was successfully saved"
       redirect_to admin_categories_path
     else
-      flash[:alert] = "Category was failed to create"
+      
       @categories = Category.all
       render :index
     end
