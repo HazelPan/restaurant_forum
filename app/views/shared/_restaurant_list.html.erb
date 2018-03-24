@@ -1,7 +1,8 @@
 <% @restaurants.each do |restaurant| %>
       <div class="col-sm-6 col-md-4">
         <div class="restaurant-item">
-          <%= image_tag "#{rand(0..20)}.jpg" , class: "img-responsive center-block" %>
+          <%= image_tag restaurant.image , class: "img-responsive center-block" %>
+          
 
           <div class="caption">
 
