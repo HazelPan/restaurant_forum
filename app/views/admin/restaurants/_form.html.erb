@@ -2,6 +2,13 @@
 <div class="container">
   <div class="row">
 
+    <div>
+        <%= link_to 'Restaurant', admin_restaurants_path, class: "btn btn-default" %> 
+        <%= link_to 'Categories', admin_categories_path, class: "btn btn-default" %>
+      </div>
+
+      <br>
+
     <% if @restaurant.errors.any? %>
       <h4>We have some errors here !</h4>
       <ul>
@@ -54,4 +61,6 @@
 
   </div>
 </div>
+
+
 
