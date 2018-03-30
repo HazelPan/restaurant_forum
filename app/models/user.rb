@@ -4,7 +4,9 @@ class User < ApplicationRecord
   has_many :comments
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         
+
+  validates_presence_of :name
+
   mount_uploader :avatar, AvatarUploader
 
   # admin? 讓我們用來判斷單個user是否有 admin 角色，列如：current_user.admin?
