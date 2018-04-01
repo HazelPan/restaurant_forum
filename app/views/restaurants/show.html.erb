@@ -1,15 +1,18 @@
-<div class="container">  
+<div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <h1><%= @restaurant.name %></h1>
+      <p>[<%= @restaurant.category.name %>]</p>
+    </div>
 
-   <div class="col-md-12">
-     <h1><%= @restaurant.name %></h1>
-     <p><strong>[ <%= @restaurant.category.name %> ]</strong></p>
-   </div>
+    <div class="col-md-4">
+      
 
-   
+          <a data-flickr-embed="true"  href="https://www.flickr.com/photos/8176740@N05/40972251132" title="Cleaning a Cafe Window"><img src="https://farm1.staticflickr.com/815/40972251132_8134b2cba6_k.jpg" width="204" height="153" alt="Cleaning a Cafe Window"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+          
+          
 
-   <div class="col-md-4">
-    <%= image_tag "#{rand(0..20)}.jpg", class: "img-responsive center-block" %>
+
       <br>
 
       <div class="well">
@@ -19,34 +22,36 @@
           <li><strong>Address:</strong> <%= @restaurant.address %></li>
         </ul>
       </div>
-
-   </div>
-
+    </div>
     <div class="col-md-8">
       <%= simple_format @restaurant.description %>
     </div>
 
-   <div class="clearfix"></div>
+    <div class="clearfix"></div>
 
-   <hr>
+    <hr>
+
   </div>
 </div>
 
 <div class="container">
   <div class="row">
+
+    <!-- 顯示與餐廳相關的評論 -->
     <% @restaurant.comments.each do |comment| %>
     <div>
       <h4><%= comment.user.name %></h4>
       <p><%= simple_format comment.content %></p>
       <p class="text-muted">
-        <em><%= time_ago_in_words(comment.created_at) %> </em>
+        <em><%= time_ago_in_words(comment.created_at) %> ago -</em>
         <% if current_user.admin? %>
-         <%= link_to "Delete", restaurant_comment_path(@restaurant, comment), method: :delete %>
-       <% end %>
+          <%= link_to "Delete", restaurant_comment_path(@restaurant, comment), method: :delete %>
+        <% end %>
       </p>
     </div>
     <hr>
     <% end %>
+
     <!-- 新增評論的表單輸入框 -->
     <%= form_for [@restaurant, @comment] do |f| %>
     <div class="form-group">
@@ -56,10 +61,6 @@
       <%= f.submit class: "btn btn-primary" %>
       <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
     </div>
-
-
     <% end %>
   </div>
 </div>
-
-<div class="text-center"> <%= link_to 'Back to index', restaurants_path, class: "btn btn-primary"  %> </div>

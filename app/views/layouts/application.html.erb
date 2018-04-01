@@ -23,14 +23,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://localhost:3000/admin/restaurants">餐廳評論網</a>
+          <a class="navbar-brand" href="http://localhost:3000">餐廳評論網</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to 'Admin後台', admin_restaurants_path %></li>
-            <li><%= link_to 'Profile', user_path(current_user)%></li>
           <% if current_user %>
+                <li><%= link_to 'Profile', user_path(current_user)%></li>
                 <li> <%= link_to 'Hi,'+current_user.email %></li>
                 <li><%= link_to('登出', destroy_user_session_path, method: :delete) %> </li>
                 <li><%= link_to('修改密碼', edit_user_registration_path) %></li>
