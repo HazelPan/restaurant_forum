@@ -2,6 +2,7 @@ class Restaurant < ApplicationRecord
   mount_uploader :image, PhotoUploader
   validates_presence_of :name
   belongs_to :category
+  
   has_many :comments, dependent: :destroy
 
   # 「餐廳被很多使用者收藏」的多對多關聯
