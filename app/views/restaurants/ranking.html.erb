@@ -1,0 +1,59 @@
+<!-- Nav taps!>
+
+<! -->
+
+<div class="container">
+  <div class="row">
+    <%= render partial: "shared/navtabs" %>
+    
+    <div class="col-md-10 col-md-offset-1">
+      <h1>Top 10 人氣餐廳 <small>(收藏數最高)</small></h1>
+      <br>
+
+      <hr>
+
+      
+
+      
+          
+          
+
+
+       <div class="col-md-10">
+
+         <div class="panel ">
+
+          <% @top10_restaurants.each do |restaurant| %>
+           <div class="panel-body">
+
+               <div class="col-md-4">
+                 <a data-flickr-embed="true"  href="https://www.flickr.com/photos/8176740@N05/40972251132" title="Cleaning a Cafe Window"><img src="https://farm1.staticflickr.com/815/40972251132_8134b2cba6_k.jpg" width="204" height="153" alt="Cleaning a Cafe Window"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+               </div>
+             
+               <div class="col-md-8">
+                 <h4><%= restaurant.name %> <kbd> <small> 收藏數:<%= restaurant.favorites_count %> </small></kbd></h4>
+                 <small><%= restaurant.category.name%></small>
+                 <p><%= truncate(restaurant.description, length: 200) %></p>
+                 <%= link_to 'Show', restaurant_path(restaurant), class: "btn btn-primary"  %>
+                 <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
+                 <hr>
+               </div>
+
+
+
+             </div>
+ 
+             <% end %> 
+       </div>
+      </div>
+
+
+             
+
+            
+    
+
+
+    </div>
+  </div>
+</div>

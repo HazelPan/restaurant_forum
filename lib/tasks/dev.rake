@@ -42,4 +42,16 @@ namespace :dev do
     puts "now you have #{Comment.count} comment data"
   end
 
+  task fake_favorite: :environment do
+    Restaurant.all.each do |restaurant|
+      rand(0..50).times do |i|
+        restaurant.favorites.create!(
+          user: User.all.sample
+        )
+      end
+    end
+    puts "have created fake favorites"
+    puts "now you have #{Favorite.count} favorites data"
+  end
+
 end
