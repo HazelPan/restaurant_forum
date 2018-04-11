@@ -1,10 +1,55 @@
-<ul>
+<!--navbar-->
 
-  <% @users.each do |user| %>
-    <li>
-      <%= user.name %>
-      <%= render partial: "shared/follow", locals: {user: user} %>
-    </li>
-  <% end %>
+<div class="container">
+  <div class="row">
 
-</ul>
+    <ul class="nav nav-tabs">
+      <li role="presentation" >
+        <%= link_to '首頁', root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to '最新動態', feeds_restaurants_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to 'TOP10人氣餐廳', ranking_restaurants_path %>
+      </li>
+      <li role="presentation" class="active">
+        <%= link_to '美食達人', users_path %>
+      </li>
+    </ul>
+
+  </div>
+</div>
+<br>
+
+
+<!--content--> 
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      
+      <div class="page-header">
+        <h1>美食達人</h1>
+      </div>
+
+    </div>
+
+    <% @users.each do |user| %>
+      <div class="col-md-3 col-sm-4 col-xs-6 text-center user-item">
+
+        <%= link_to user_path(user) do %>
+    
+    <a data-flickr-embed="true"  href="https://www.flickr.com/photos/tweeling17/37879774864/in/photolist-VMY73q-23urYYM-23jE4bk-VnY74L-PNrHEC-Scu2TF-21vrmAN-HYdUjr-StY7FV-U1uBhp-ZHiKmC-21vrmJo-23inMiy-RKuhPW-Xy6Nbt-RCDyot-T3kRBS-Vmc7iR-23CCYra-Xoz9FS-SpD2gg-ZtLueq-QZTRc2-24rgnP4-ZNpQRa-K2MiRK-RVP585-23TJxwm-Fm65FK-TBPxAK-V1bL2g-G8cjSh-Xcjj6U-CbP1eJ-HAAR3U-E4uFdQ-X5S3C3-P9QFhs-XuqSFu-HtNbT7-URtDKm-YRTZUW-Pmtcdx-RZ8AZe-UgPBEY-SFJENP-XgKWo8-J9Mt88-VPJmBh-J7FdiJ/" title="Woman"><img src="https://farm5.staticflickr.com/4519/37879774864_b7423611ef_q.jpg" width="150" height="150" alt="Woman" class="img-rounded"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+       <h4><%= user.name %></h4> 
+       <%= render partial: "shared/follow", locals: {user: user} %>
+     <% end %>
+   </div>
+   <br>
+
+   <% end %>
+  </div>
+</div>
+

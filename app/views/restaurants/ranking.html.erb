@@ -1,10 +1,31 @@
-<!-- Nav taps!>
-
-<! -->
+<!--navbar-->
 
 <div class="container">
   <div class="row">
-    <%= render partial: "shared/navtabs" %>
+
+    <ul class="nav nav-tabs">
+      <li role="presentation" >
+        <%= link_to '首頁', root_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to '最新動態' , feeds_restaurants_path%>
+      </li>
+      <li role="presentation"  class="active">
+        <%= link_to 'TOP10人氣餐廳', ranking_restaurants_path %>
+      </li>
+      <li role="presentation">
+        <%= link_to '美食達人', users_path %>
+      </li>
+    </ul>
+
+  </div>
+</div>
+<br>
+<!---->
+
+<div class="container">
+  <div class="row">
+    
     
     <div class="col-md-10 col-md-offset-1">
       <h1>Top 10 人氣餐廳 <small>(收藏數最高)</small></h1>
@@ -31,17 +52,19 @@
                </div>
              
                <div class="col-md-8">
-                 <h4><%= restaurant.name %> <kbd> <small> 收藏數:<%= restaurant.favorites_count %> </small></kbd></h4>
+                 <h4> <strong><%= restaurant.name %></strong>  <kbd>  收藏數:<%= restaurant.favorites_count %> </kbd></h4>
                  <small><%= restaurant.category.name%></small>
                  <p><%= truncate(restaurant.description, length: 200) %></p>
                  <%= link_to 'Show', restaurant_path(restaurant), class: "btn btn-primary"  %>
                  <%= render partial: "shared/favorite", locals: {restaurant: restaurant} %>
-                 <hr>
+                 
                </div>
 
 
 
+
              </div>
+               <hr>
  
              <% end %> 
        </div>
